@@ -1,7 +1,23 @@
+// window.onload = () => {
+//     const contents = document.getElementById("contents")
+//     const arry = [] 
+//     console.log("w")
+
+//     for(let i = 0; i < localStorage.length; i++){        
+//         const newP = document.createElement("p");
+//         newP.innerHTML = "<a class='board'>"+ `${localStorage.key(i)}`+"</a>"
+//         contents.appendChild(newP);       
+        
+//         arry.push({ id : `${localStorage.key(i)}`});
+//         // console.log(arry[i].id)
+//         // console.log(newP.textContent)
+//     }        
+// }
+
 document.addEventListener('DOMContentLoaded', () => {
     const inputBtn = document.querySelector('button')
-    const saveBtn = document.querySelector('.contents__save')
-
+    const saveBtn = document.querySelector('.contents_save')    
+    
     const addInput = () => {
         const contentsInput = document.getElementById("contents_input");
         const newP = document.createElement("p");
@@ -17,35 +33,37 @@ document.addEventListener('DOMContentLoaded', () => {
         input.forEach(x => {
             arry.push(x.value)
         })
-        console.log(arry)
         localStorage.setItem(date, arry);
     }
+    
+    const open = () => {
+        alert('확인')
+    }
 
+    // const board = document.querySelector('.board');  
+    // console.log(board)
+    
+    
+    // board.addEventListener('click',(e) => {
+    //     console.log("currentTarget : ",e.currentTarget);
+    //     console.log("Target : ",e.target);
+    // })
+
+    const load = () => {
+        const contents = document.getElementById("contents")
+        const arry = []      
+
+        for(let i = 0; i < localStorage.length; i++){        
+            const newP = document.createElement("p");
+            newP.innerHTML = "<a class='board'>"+ `${localStorage.key(i)}`+"</a>"
+            contents.appendChild(newP);       
+            console.log(localStorage.length)
+            arry.push({ id : `${localStorage.key(i)}`});
+            console.log(arry[i].id)
+            console.log(newP.textContent)
+        }  
+    }
+    window.addEventListener('load', load)
     inputBtn.addEventListener('click', addInput)
     saveBtn.addEventListener('click', save)
 }) 
-{/* <button type='button' onclick='addInput()'><img src='plusicon.png' height='10' width='10'></img> */}
-
-// const remove = (obj) => {
-//     document.getElementById('input').removeChild(obj.parentNode);
-// }
-
-// const contents = document.getElementsByClassName("contents")
-// if(contents.style.display != none){
-//     const newP = document.createElement("p")
-//     newP.innerHTML = "<input type='text'>";
-//     input.appendChild(newP);
-// }
-// window.onload = () => {
-//     const contents = document.getElementById("contents")
-//     const newSpan = document.createElement("span");
-//     newSpan.innerHTML = "<button type='button' onclick='input()'>작성</button>";
-//     contents.appendChild(newSpan);
-// }
-
-// const input = () => {
-//     const contents = document.getElementById("contents");
-//     contents.innerHTML = "<form id='contents_input'><input type='text' class='key'><input type='number' class='value'><button type='button' onclick='addInput()'><img src='plusicon.png' height='10' width='10'></button><input type='submit' onclick='save()' value='저장'></form>";
-// }
-
-
