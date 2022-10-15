@@ -1,69 +1,55 @@
-// window.onload = () => {
-//     const contents = document.getElementById("contents")
-//     const arry = [] 
-//     console.log("w")
-
-//     for(let i = 0; i < localStorage.length; i++){        
-//         const newP = document.createElement("p");
-//         newP.innerHTML = "<a class='board'>"+ `${localStorage.key(i)}`+"</a>"
-//         contents.appendChild(newP);       
-        
-//         arry.push({ id : `${localStorage.key(i)}`});
-//         // console.log(arry[i].id)
-//         // console.log(newP.textContent)
-//     }        
-// }
-
 document.addEventListener('DOMContentLoaded', () => {
-    const inputBtn = document.querySelector('button')
+    const inputBtn = document.querySelector('button')        
+    const contents = document.getElementById("contents")
+    const contentsInput = document.getElementById("contents_input")
     const saveBtn = document.querySelector('.contents_save')    
-    
+ 
+    // index.html 목록 띄우는 함수
+    const load = () => {                     
+        for(let i = 0; i < localStorage.length; i++){        
+            contents.innerHTML += "<p class='?'>"+ `${localStorage.key(i)}`+"</p>"
+        }        
+        open();              
+    }    
+
+    // 클릭해서 정보 띄우기
+    const open = () => {
+        const clickP = document.querySelectorAll('.contents p')           
+        clickP.forEach(p => {
+            p.onclick = function() {
+                contents.innerHTML =""
+                const storage = localStorage[this.textContent].split(",")
+                console.log(storage)
+                for(let i=0; i<storage.length; i+=2){
+                    contents.innerHTML += "<input type='text' value="+`${storage[i]}`+ "><input type='number' value="+`${storage[i+1]}`+">"
+                }
+            }
+        })
+    }
+
+    // 작성 칸 추가 함수
     const addInput = () => {
-        const contentsInput = document.getElementById("contents_input");
         const newP = document.createElement("p");
         newP.innerHTML = "<input type='text'><input type='number'>";
         contentsInput.appendChild(newP);
     }
-
-    const save = () => {
-        const contents = document.getElementById("contents_input");
-        const input = contents.querySelectorAll("input");
+    
+    // 작성 내용 저장 함수
+    const save = () => {        
+        const input = contentsInput.querySelectorAll("input");
         const date = new Date().toLocaleDateString();
-        const arry = []
+        const arryInput = []
+
         input.forEach(x => {
-            arry.push(x.value)
+            arryInput.push(x.value)
         })
-        localStorage.setItem(date, arry);
-    }
-    
-    const open = () => {
-        alert('확인')
+        localStorage.setItem(date, arryInput);
     }
 
-    // const board = document.querySelector('.board');  
-    // console.log(board)
+    // 목록에서 내용 확인 하는 함수
     
-    
-    // board.addEventListener('click',(e) => {
-    //     console.log("currentTarget : ",e.currentTarget);
-    //     console.log("Target : ",e.target);
-    // })
 
-    const load = () => {
-        const contents = document.getElementById("contents")
-        const arry = []      
-
-        for(let i = 0; i < localStorage.length; i++){        
-            const newP = document.createElement("p");
-            newP.innerHTML = "<a class='board'>"+ `${localStorage.key(i)}`+"</a>"
-            contents.appendChild(newP);       
-            console.log(localStorage.length)
-            arry.push({ id : `${localStorage.key(i)}`});
-            console.log(arry[i].id)
-            console.log(newP.textContent)
-        }  
-    }
     window.addEventListener('load', load)
     inputBtn.addEventListener('click', addInput)
-    saveBtn.addEventListener('click', save)
-}) 
+    if(saveBtn!=null) saveBtn.addEventListener('click', save)
+})
