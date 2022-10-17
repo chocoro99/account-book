@@ -14,15 +14,20 @@
             <span>내 월급은 어디로</span>
         </div>
         <div class="contents">
+            <div class="contents_header2">
+                <p>사용처</p>
+                <p>금액</p>
+            </div>
             <form>
                 <div class="contents_input" id="contents_input">
                     <input type="text">
                     <input type="number">
                     <button type="button" class="contents_input--btn"><img  src="plusicon.png" height="10" width="10"></button>
-                </div>  
-                <input class="contents_save"  type="button" onclick="location.href='index.html'" value="저장">
-                <input type="button" onclick="location.href='index.html'" value="취소">                                                     
-            </form>            
+                </div>
+                <br>                                                                     
+            </form>  
+            <button class="contents_save" onclick="location.href='index.html'">저장</button>
+            <button class="contents_cancel" onclick="location.href='index.html'">취소</button>          
         </div>
     </div>
 </body>
