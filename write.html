@@ -7,6 +7,7 @@
     <title>내 월급은 어디로</title>
     <link rel="stylesheet" href="style.css"/>
     <script type="text/javascript" src="javascript.js"></script>
+    <script src="https://kit.fontawesome.com/c2048b9764.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
@@ -20,12 +21,14 @@
             </div>
             <form>
                 <div class="contents_input" id="contents_input">
-                    <input type="text">
-                    <input type="number">
-                    <button type="button" class="contents_input--btn"><img  src="plusicon.png" height="10" width="10"></button>
+                    <p>
+                        <input type="text">
+                        <input type="number">
+                    </p>
                 </div>
                 <br>                                                                     
             </form>  
+            <button class="contents_save contents_input--btn" type="button">추가</button>
             <button class="contents_save" onclick="location.href='index.html'">저장</button>
             <button class="contents_cancel" onclick="location.href='index.html'">취소</button>          
         </div>

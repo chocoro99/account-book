@@ -11,7 +11,8 @@
 .container{
     width: 100vw;
     height: 100vh;
-    background-color:rgb(105, 160, 151);
+    /* background-color:rgb(105, 160, 151); */
+    background-color: #333D79;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,6 +22,7 @@
 }
 .title span{
     font-size: 36px;
+    color: white;
 }
 .contents{
     background: white;
@@ -85,12 +87,25 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 .contents_input{
     margin-top: 20px;    
+    /* display: flex; */
+    /* justify-content: center; */
 }
-.contents_input > input{
+.contents_input > p {
+    display: flex;
+    justify-content: center;
+}
+.contents_input > p > input{
+    margin: 0;
     margin-right: 10px;
+    height: 30px;
+    margin-top: 10px;
 }
-.contents_input > button{
+.contents_input > p > button{
     border: none;
+    background: white;
+}
+.contents_input > p > button > i {
+    font-size: 20px;
 }
 .add_input--b{
     margin-right: 24px;
@@ -101,6 +116,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 /* 버튼 효과 */
 .write_btn,
 .write_btn::after,
+.contents_input--btn,
 .contents_save,
 .contents_save::after,
 .contents_cancel,
@@ -117,16 +133,21 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 .contents_cancel,
 .home {
   background: none;
-  border: 2px solid black;
+  border: 2px solid darkblue;
   border-radius: 5px;
-  color: black;
+  color: darkblue;
   display: block;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   position: relative;
   z-index: 0;
   margin-bottom: 2px;
   display: inline-block;
+  right: 10px;
+  bottom: 5px;
+  cursor: pointer;
+  padding: 4px;
+  margin: 3px;
 }
 .write_btn::before,
 .write_btn::after,
@@ -136,7 +157,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 .contents_cancel::after,
 .home::before,
 .home::after {
-  background: black;
+  background: darkblue;
   content: '';
   position: absolute;
   z-index: -1;
@@ -163,5 +184,10 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   height: 100%;
 }
 .contents_list:hover{
-    color:rgb(233, 66, 255)
+    /* color:rgb(53, 202, 128) */
+    color: #8AAAE5;
+    cursor: pointer;
+}
+.home {
+    margin-top: 20px;
 }
